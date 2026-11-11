@@ -1,0 +1,28 @@
+{
+  "name": "okdata",
+  "owner": {
+    "name": "okdata",
+    "email": "hello@okdata.online"
+  },
+  "metadata": {
+    "description": "Agent Skills for okdata: public social data from Douyin, Xiaohongshu, WeChat, Bilibili, Weibo, TikTok, X and YouTube, paid per call.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "okdata-skills",
+      "description": "Competitor monitoring, comments and word of mouth, creator discovery, trends and hot search, content research and YouTube transcripts with okdata, plus a setup skill.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/okdata-setup",
+        "./skills/okdata-competitors",
+        "./skills/okdata-comments",
+        "./skills/okdata-creators",
+        "./skills/okdata-trends",
+        "./skills/okdata-content-research",
+        "./skills/okdata-transcripts"
+      ]
+    }
+  ]
+}
