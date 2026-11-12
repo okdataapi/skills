@@ -19,15 +19,21 @@ linked to the moment in the video.
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 0.1.0, price book 1. Prices are in USD; failed calls are free.
+Catalog 2fb7095ff6401e35, price book f4f90b4727f4840a. Prices are in USD; failed calls are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
 | YouTube | `youtube.videos.transcript.get` | The transcript of a video with timestamps, in the original or a chosen language. | `id` | one object | $0.004 per call |
+| Instagram | `instagram.posts.transcript.get` | What is said in a reel or video post, by shortcode or link, with timestamps. Videos up to two minutes long. | `id` or `url` | one object | $0.004 per call |
+| Reddit | `reddit.posts.transcript.get` | The captions of a Reddit-hosted video post, with timestamps. A post without captions is not_found and costs nothing. | `id` or `url` | one object | $0.004 per call |
+| Xiaohongshu (RedNote) | `xiaohongshu.videos.get` | A video note by ID or link: title, text, author, likes, comments, saves and shares, plus the video file, its length and cover, the subtitles the platform made where it has them, and whether the note is a reported brand partnership. Video notes only; an image note is the note detail’s. | `id` or `url` | one object | $0.02 per call |
+| TikTok | `tiktok.videos.transcript.get` | What is said in a TikTok video, by ID or link: the whole text and timed segments, from the video's captions (TikTok's own, often auto-generated). lang picks the captions' language; a video without captions in it is not found and not charged. | `id` or `url` | one object | $0.002 per call |
 <!-- okdata:endpoints:end -->
 
-Transcripts are available for YouTube only. For Douyin, Bilibili or TikTok videos, say so plainly; the video
-detail endpoints still give the caption, title and description.
+This skill is about YouTube. Transcripts also exist for TikTok videos (`tiktok.videos.transcript.get`), Instagram
+reels (`instagram.posts.transcript.get`) and Reddit videos (`reddit.posts.transcript.get`), which take the link
+(`url`) or the id, and work the same way. Douyin and Bilibili videos have none: say so plainly; their detail
+endpoints still give the caption, title and description.
 
 ## Steps
 
@@ -45,9 +51,11 @@ detail endpoints still give the caption, title and description.
 ## How to call okdata
 
 <!-- okdata:howto:start -->
-**Over MCP** (preferred when the `okdata` MCP server is connected): call `describe` with an endpoint id to see
-its parameters, fields and price (free), then `call` with `{"endpoint": "<id>", "params": {...}, "idempotency_key": "<uuid>"}`.
-`find` searches endpoints by plain words in English or Chinese. Not connected? See the `okdata-setup` skill.
+**Over MCP** (preferred when the `okdata` MCP server is connected): `describe` an endpoint id to see its
+parameters, fields and price (free), then `call` it with the id as `capability` and its parameters alongside, e.g.
+`{"capability": "<id>", "query": "...", "max_price": "0.05", "idempotency_key": "<uuid>"}`. `find` searches
+endpoints by plain words in English or Chinese and `read_more` returns the rest of a long answer; both are free.
+Not connected? See the `okdata-setup` skill.
 
 **Over HTTP** (when there is no MCP): the path is the endpoint id with dots as slashes under `/v1`, parameters
 go in the query string, and the key comes from the environment, never from the chat:
@@ -67,7 +75,7 @@ with the same `Idempotency-Key` so it cannot be charged twice.
 
 ## Report
 
-- Title and channel (from `youtube.videos.get` if you need them, $0.004) and the transcript language.
+- Title and channel (from `youtube.videos.get` if you need them, $0.002) and the transcript language.
 - The summary, notes or answers the person asked for, each point ending with its time link, e.g.
   `[03:41](https://youtu.be/dQw4w9WgXcQ?t=221)`.
 - Quotes word for word from the transcript; mark auto-generated captions as possibly inexact.

@@ -48,14 +48,25 @@ const path_ = (e) => e.path ?? `/v1/${e.id.split('.').join('/')}`;
 const cell = (s) => String(s).replace(/\|/g, '\\|');
 
 function needs(e) {
-  const required = e.params.filter((p) => p.required).map((p) => `\`${p.name}\``);
-  const idOrUrl = e.params.some((p) => p.name === 'id' && !p.required) && e.params.some((p) => p.name === 'url' && !p.required);
-  if (idOrUrl) required.unshift('`id` or `url`');
-  return required.length ? required.join(', ') : 'nothing';
+  // oneOf: groups of parameters of which exactly one must be given, e.g. [["id", "url"]].
+  const groups = e.oneOf ?? [];
+  if (!e.oneOf) {
+    // Older catalogs have no oneOf: an optional id next to an optional url means one of the two.
+    const idOrUrl = e.params.some((p) => p.name === 'id' && !p.required) && e.params.some((p) => p.name === 'url' && !p.required);
+    if (idOrUrl) groups.push(['id', 'url']);
+  }
+  const grouped = new Set(groups.flat());
+  const either = groups.map((g) => g.map((n) => `\`${n}\``).join(' or '));
+  const required = e.params.filter((p) => p.required && !grouped.has(p.name)).map((p) => `\`${p.name}\``);
+  const all = [...either, ...required];
+  return all.length ? all.join(', ') : 'nothing';
 }
 
 function endpointsBlock(catalog, job) {
-  const list = catalog.endpoints.filter((e) => job === 'all' || e.jobs.includes(job));
+  // Paused endpoints are listed in the catalog before they can be called; a skill only shows live ones.
+  const live = catalog.endpoints.filter((e) => !e.paused);
+  if (job === 'all') return platformsBlock(catalog, live);
+  const list = live.filter((e) => e.jobs.includes(job));
   const names = Object.fromEntries(catalog.platforms.map((p) => [p.id, p.name.en]));
   const rows = list.map((e) => {
     const page = e.list ? `page of ~${e.pageSize ?? '?'}` : 'one object';
@@ -70,12 +81,34 @@ function endpointsBlock(catalog, job) {
   ].join('\n');
 }
 
+/** For okdata-setup: one row per platform. Listing every endpoint here would cost an agent ~15k tokens. */
+function platformsBlock(catalog, live) {
+  const rows = catalog.platforms.flatMap((p) => {
+    const prices = live.filter((e) => e.platform === p.id).map((e) => e.price).sort((a, b) => Number(a) - Number(b));
+    if (!prices.length) return [];
+    const range = prices[0] === prices.at(-1) ? `$${prices[0]}` : `$${prices[0]} to $${prices.at(-1)}`;
+    return [`| ${cell(p.name.en)} | ${prices.length} | ${range} | ${cell(p.summary.en)} |`];
+  });
+  return [
+    `Catalog ${catalog.revision}, price book ${catalog.priceBook}: ${live.length} endpoints you can call on ${rows.length} platforms.`,
+    'Prices are in USD per call (a few are per item returned, with a cap per call); failed calls are free. `find` picks',
+    'the endpoint for a need and `describe` gives its parameters and exact price, both free; every price is also in',
+    'https://okdata.online/prices.json.',
+    '',
+    '| Platform | Endpoints | Prices | What it has |',
+    '|---|---|---|---|',
+    ...rows,
+  ].join('\n');
+}
+
 function howtoBlock(catalog) {
   const sample = catalog.endpoints.find((e) => e.id === 'weibo.trends.list') ?? catalog.endpoints[0];
   return [
-    '**Over MCP** (preferred when the `okdata` MCP server is connected): call `describe` with an endpoint id to see',
-    'its parameters, fields and price (free), then `call` with `{"endpoint": "<id>", "params": {...}, "idempotency_key": "<uuid>"}`.',
-    '`find` searches endpoints by plain words in English or Chinese. Not connected? See the `okdata-setup` skill.',
+    '**Over MCP** (preferred when the `okdata` MCP server is connected): `describe` an endpoint id to see its',
+    'parameters, fields and price (free), then `call` it with the id as `capability` and its parameters alongside, e.g.',
+    '`{"capability": "<id>", "query": "...", "max_price": "0.05", "idempotency_key": "<uuid>"}`. `find` searches',
+    'endpoints by plain words in English or Chinese and `read_more` returns the rest of a long answer; both are free.',
+    'Not connected? See the `okdata-setup` skill.',
     '',
     '**Over HTTP** (when there is no MCP): the path is the endpoint id with dots as slashes under `/v1`, parameters',
     'go in the query string, and the key comes from the environment, never from the chat:',

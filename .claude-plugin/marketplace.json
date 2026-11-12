@@ -5,7 +5,7 @@
     "email": "hello@okdata.online"
   },
   "metadata": {
-    "description": "Agent Skills for okdata: public social data from Douyin, Xiaohongshu, WeChat, Bilibili, Weibo, TikTok, X and YouTube, paid per call.",
+    "description": "Agent Skills for okdata: public social data from Douyin, Xiaohongshu, WeChat, Kuaishou, Bilibili, Weibo, TikTok, X, YouTube, Instagram, Reddit and more, paid per call.",
     "version": "0.1.0"
   },
   "plugins": [
