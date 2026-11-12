@@ -6,7 +6,7 @@
 
 Skills that teach an AI agent (Claude Code, Codex, Cursor, OpenClaw and anything else that reads `SKILL.md`)
 to do marketing and research jobs with [okdata](https://okdata.online): public data from Douyin, Xiaohongshu
-(RedNote), WeChat, Kuaishou, Bilibili, Weibo, Zhihu, TikTok, X, YouTube, Instagram, Reddit and more (196 endpoints
+(RedNote), WeChat, Kuaishou, Bilibili, Weibo, Zhihu, TikTok, X, YouTube, Instagram, Reddit and more (200+ endpoints
 on 17 platforms), paid per call.
 
 | Skill | The job |
@@ -65,7 +65,7 @@ MIT licence. okdata is not affiliated with the platforms it reads.
 
 让 AI 智能体（Claude Code、Codex、Cursor、OpenClaw 等能读 `SKILL.md` 的工具）用 [okdata](https://okdata.online/zh/)
 做营销和调研的技能包。okdata 提供抖音、小红书、微信、快手、B站、微博、知乎、TikTok、X、YouTube、Instagram、Reddit
-等 17 个平台的公开数据（196 个接口），按次付费。
+等 17 个平台的公开数据（200 多个接口），按次付费。
 
 | 技能 | 做什么 |
 |---|---|
