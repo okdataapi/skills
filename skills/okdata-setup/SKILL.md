@@ -125,7 +125,7 @@ In a terminal, the command line needs no install: `npx okdata find <words>` (fre
 ## Platforms and prices
 
 <!-- okdata:endpoints:start -->
-Catalog 2fb7095ff6401e35, price book f4f90b4727f4840a: 190 endpoints you can call on 17 platforms.
+Catalog 93bd2077ee161657, price book f4f90b4727f4840a: 190 endpoints you can call on 17 platforms.
 Prices are in USD per call (a few are per item returned, with a cap per call); failed calls are free. `find` picks
 the endpoint for a need and `describe` gives its parameters and exact price, both free; every price is also in
 https://okdata.online/prices.json.

@@ -32,7 +32,7 @@ earns, and which posts broke out. Every number comes from okdata calls you can c
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 2fb7095ff6401e35, price book f4f90b4727f4840a. Prices are in USD; failed calls are free.
+Catalog 93bd2077ee161657, price book f4f90b4727f4840a. Prices are in USD; failed calls are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
