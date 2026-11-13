@@ -19,7 +19,7 @@ with counts and real quotes the person can click through to.
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 93bd2077ee161657, price book f4f90b4727f4840a. Prices are in USD; failed calls are free.
+Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD; failed calls are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
@@ -52,6 +52,7 @@ Catalog 93bd2077ee161657, price book f4f90b4727f4840a. Prices are in USD; failed
 | WeChat Search | `wechat.posts.search` | WeChat Search results for keywords: Official Account articles and Channels videos mixed (type says which), by relevance, newest or hottest, filtered by time posted, or articles or videos only. Title or description, the source account name, time posted; articles with their link (and a band of reads on some), videos with likes and an export/… ID for wechat_channels.videos.get. WeChat Search gives no account ID. | `query` | page of ~20 | $0.02 per call |
 | WeChat Official Accounts | `wechat_mp.articles.comments.list` | The featured comments on an article, by its link: text, commenter, likes, reply count, time posted, IP location and whether pinned. A comment's id goes to wechat_mp.comments.replies.list. | `url` | page of ~20 | $0.02 per call |
 | WeChat Official Accounts | `wechat_mp.comments.replies.list` | The replies under one comment on an article, by the comment's ID and the article's link: text, replier, likes, time posted and IP location. The first batch only, without further pages. | `id`, `post_id` | page of ~3 | $0.02 per call |
+| WeChat Search | `wechat.backup.posts.search` | The backup of wechat.posts.search, from another source: the same parameters and result. | `query` | page of ~20 | $0.15 per call |
 | YouTube | `youtube.comments.replies.list` | The replies under a comment, by the comment's replies token, about 10 at a time: text, replier (handle, avatar, verification), likes, and roughly when it was posted (YouTube says "6 years ago"). post_id and parent_id are read from the token. | `id` | page of ~10 | $0.002 per call |
 | TikTok | `tiktok.comments.replies.list` | The replies to a comment, by the comment's ID and its video's ID, 20 a page: text, replier, likes, time posted and which comment each one answers. A comment that does not exist reads like one without replies: an empty page, not a 404. | `id`, `post_id` | page of ~20 | $0.002 per call |
 | X (Twitter) | `x.posts.replies.list` | The replies under a post, in the order X ranks them, up to about 60 a page. A reply is a post itself, so each comes back as a post: text, author, time posted, views, likes and its own reply count. | `id` | page of ~35 | $0.002 per call |

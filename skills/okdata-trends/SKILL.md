@@ -18,7 +18,7 @@ Read the boards, find what several platforms agree on, and show the posts that e
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 93bd2077ee161657, price book f4f90b4727f4840a. Prices are in USD; failed calls are free.
+Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD; failed calls are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
@@ -54,6 +54,10 @@ Catalog 93bd2077ee161657, price book f4f90b4727f4840a. Prices are in USD; failed
 | Xiaohongshu (RedNote) | `xiaohongshu.pgy.notes.trending` | The trending notes of PGY’s content square: eight boards (Xiaohongshu hot, product seeding, e-commerce promotion, PGY sponsored, lead collection, e-commerce hot, seeding to shop, app promotion), whole or narrowed to some words, over the last 3, 7, 14 or 30 days, image or video notes alone if wanted. Each with title, time published, reads, likes, saves, comments, pictures and the creator’s ID, name and followers. Each board holds its top 100. | nothing | page of ~34 | $0.04 per call |
 | Bilibili | `bilibili.videos.trending` | Bilibili's popular videos, 20 a page: title, description, uploader, views, likes, coins, saves, danmaku, length, section, IP location and why it is recommended. | nothing | page of ~20 | $0.002 per call |
 | WeChat Search | `wechat.posts.search` | WeChat Search results for keywords: Official Account articles and Channels videos mixed (type says which), by relevance, newest or hottest, filtered by time posted, or articles or videos only. Title or description, the source account name, time posted; articles with their link (and a band of reads on some), videos with likes and an export/… ID for wechat_channels.videos.get. WeChat Search gives no account ID. | `query` | page of ~20 | $0.02 per call |
+| WeChat Search | `wechat.index.keywords.history` | A keyword's WeChat Index over the last 30 days, one figure a day (points[].composite_index). The index is WeChat's attention score across Search, articles, Moments and more, not a count of searches, and does not compare with Douyin's or Xiaohongshu's; days are China calendar days (UTC+8). | `keyword` | page of ~1 | $0.15 per call |
+| WeChat Search | `wechat.keywords.related` | The suggestions WeChat Search lists under its search box for a keyword, in its order, about 9 at a time (the keyword itself left out). Words and their places only, without an index. | `keyword` | page of ~9 | $0.15 per call |
+| WeChat Search | `wechat.backup.posts.search` | The backup of wechat.posts.search, from another source: the same parameters and result. | `query` | page of ~20 | $0.15 per call |
+| TikTok | `tiktok.hashtags.videos.list` | The videos under a hashtag, by its name, about 20 a page in TikTok's order: caption, author, plays, likes, comments, shares, saves, hashtags and time posted, with length, cover and music under ext. | `id` | page of ~20 | $0.002 per call |
 | Weibo | `weibo.backup.trends.list` | The backup of weibo.trends.list, for when it cannot serve: the Weibo hot search list from a separate data path (the app's), at a little more. The 50 ranked topics at their places, with heat; the pinned topic and paid rows are left out. | nothing | page of ~50 | $0.0025 per call |
 <!-- okdata:endpoints:end -->
 

@@ -19,7 +19,7 @@ numbers and the posts that back each pick.
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 93bd2077ee161657, price book f4f90b4727f4840a. Prices are in USD; failed calls are free.
+Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD; failed calls are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
@@ -71,7 +71,10 @@ Catalog 93bd2077ee161657, price book f4f90b4727f4840a. Prices are in USD; failed
 | WeChat Search | `wechat.accounts.search` | Official Accounts and service accounts for keywords, live from WeChat Search, closest first (less related ones may follow): original ID, WeChat ID, name, bio, avatar, whether verified and by whom, number of original articles. Charged per call; no follower or read counts (wechat_mp.accounts.search gives estimates of those). | `query` | page of ~8 | $0.02 per call |
 | WeChat Channels | `wechat_channels.backup.users.get` | The backup of wechat_channels.users.get, from another source: the same parameters and result, without the number of videos. | `id` | one object | $0.03 per call |
 | Telegram | `telegram.channels.get` | A public Telegram channel by handle: name, description, avatar, subscribers (rounded, as t.me shows them) and verification, and under ext the photo, video, file and link counts it shows. | `username` | one object | $0.002 per call |
+| YouTube | `youtube.channels.get` | A channel by ID or handle: name, description, avatar, verification, subscribers and video count (rounded as YouTube shows them), and under ext its total views, the day it joined, the links in its About section, country and banner. The handle comes back when you ask by handle. | `id` or `username` | one object | $0.002 per call |
+| YouTube | `youtube.channels.search` | Find channels by keywords, 20 a page in YouTube's order: channel ID, name, the start of the description, avatar and subscribers (rounded as YouTube shows them). No handle or badge here; youtube.channels.get gives the badge. | `query` | page of ~20 | $0.004 per call |
 | TikTok | `tiktok.users.search` | Find TikTok accounts by keyword, 30 a page: handle, name, avatar, followers, following, video count and likes received. | `query` | page of ~30 | $0.002 per call |
+| TikTok | `tiktok.users.followers.list` | The accounts following a TikTok account, newest followers first, 20 a page, by handle or account ID: handle, name, bio, avatar, followers, following, video count, likes received, and (under ext) the follower's country or region and language. | `id` or `username` | page of ~20 | $0.002 per call |
 | X (Twitter) | `x.posts.retweeters.list` | The accounts that retweeted a post, about 100 a page: handle, name, bio and follower count. | `id` | page of ~100 | $0.002 per call |
 | X (Twitter) | `x.users.search` | Accounts matching keywords, 20 a page: handle, name, bio, followers, following, post count and verification. | `query` | page of ~20 | $0.0004 per item, at most $0.008 per call |
 | X (Twitter) | `x.users.followers.list` | The accounts following an account, newest followers first, 200 a page: handle, name, bio, followers and post count. | `username` | page of ~200 | $0.0001 per item, at most $0.02 per call |

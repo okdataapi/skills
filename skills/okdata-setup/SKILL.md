@@ -13,7 +13,7 @@ metadata:
 
 # Set up okdata
 
-okdata reads public posts, accounts, comments, hot lists, transcripts, creators and ads from 17 platforms (196
+okdata reads public posts, accounts, comments, hot lists, transcripts, creators and ads from 17 platforms (200+
 endpoints) through one key. Each call is paid (from $0.0001), failed calls are free, and nothing needs a platform
 login.
 
@@ -125,7 +125,7 @@ In a terminal, the command line needs no install: `npx okdata find <words>` (fre
 ## Platforms and prices
 
 <!-- okdata:endpoints:start -->
-Catalog 93bd2077ee161657, price book f4f90b4727f4840a: 190 endpoints you can call on 17 platforms.
+Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e: 201 endpoints you can call on 17 platforms.
 Prices are in USD per call (a few are per item returned, with a cap per call); failed calls are free. `find` picks
 the endpoint for a need and `describe` gives its parameters and exact price, both free; every price is also in
 https://okdata.online/prices.json.
@@ -134,19 +134,19 @@ https://okdata.online/prices.json.
 |---|---|---|---|
 | Douyin | 38 | $0.002 to $0.04 | China’s TikTok: videos, accounts, comments and the hot search board. |
 | Xiaohongshu (RedNote) | 30 | $0.02 to $0.04 | Lifestyle notes, creators and what people search for. |
-| WeChat Official Accounts | 7 | $0.02 to $0.058 | Official Account articles and history, without a QR login. |
+| WeChat Official Accounts | 8 | $0.02 to $0.15 | Official Account articles and history, without a QR login. |
 | Bilibili | 9 | $0.002 to $0.0025 | Videos, comments and the popular board. |
 | Weibo | 11 | $0.002 to $0.0025 | Posts, accounts and the hot search list. |
-| TikTok | 15 | $0.002 to $0.004 | Videos, accounts and comments worldwide. |
+| TikTok | 17 | $0.002 to $0.004 | Videos, accounts and comments worldwide. |
 | X (Twitter) | 20 | $0.0001 to $0.009 | Posts, accounts, search and trends. |
-| YouTube | 7 | $0.002 to $0.004 | Videos, comments and transcripts. |
+| YouTube | 10 | $0.002 to $0.004 | Videos, comments and transcripts. |
 | Meta Ad Library | 3 | $0.004 | Ads running on Facebook and Instagram, by keyword or advertiser. |
 | Google Ads Transparency | 2 | $0.004 | Advertisers and their ads on Search, YouTube and Display. |
 | Instagram | 8 | $0.002 to $0.004 | Profiles, posts and reels, comments, hashtags and what a reel says. |
 | Reddit | 11 | $0.002 to $0.004 | Posts, comments, communities, people and what is trending. |
 | Kuaishou | 8 | $0.002 to $0.02 | Videos, accounts, comments and the hot list. |
 | Zhihu | 2 | $0.002 | Questions and answers, articles, columns, people and the hot list. |
-| WeChat Channels | 14 | $0.015 to $0.06 | Channels videos, accounts, comments and live replays, without a QR login. |
-| WeChat Search | 2 | $0.02 | WeChat Search across Official Account articles, Channels videos and mini programs. |
+| WeChat Channels | 15 | $0.015 to $0.15 | Channels videos, accounts, comments and live replays, without a QR login. |
+| WeChat Search | 6 | $0.02 to $0.15 | WeChat Search across Official Account articles, Channels videos and mini programs. |
 | Telegram | 3 | $0.002 | Public channels and their messages. |
 <!-- okdata:endpoints:end -->
