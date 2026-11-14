@@ -22,6 +22,12 @@ on 17 platforms), paid per call.
 Each skill says which endpoints it uses and what they cost, asks the agent to state the cost before it spends,
 and ends every report with where the data came from and when it was fetched.
 
+**One skill per platform, named in Chinese** (people search skill markets by platform name): `okdata-xiaohongshu`
+(小红书数据助手), `okdata-douyin` (抖音), `okdata-wechat-mp` (公众号), `okdata-wechat-search` (微信搜一搜 and 微信指数),
+`okdata-wechat-channels` (视频号), `okdata-kuaishou` (快手), `okdata-bilibili` (B站), `okdata-weibo` (微博), `okdata-zhihu`
+(知乎), `okdata-tiktok`, `okdata-x`, `okdata-youtube`, `okdata-instagram`, `okdata-reddit` and `okdata-ad-library` (Meta and
+Google ad libraries). Each lists every live endpoint of its platform with the price.
+
 ## Install
 
 Any agent, with the [skills CLI](https://github.com/vercel-labs/skills):
@@ -55,6 +61,10 @@ node scripts/sync.mjs --catalog https://api.okdata.online/v1/catalog   # or a lo
 node scripts/sync.mjs --check                                         # exit 1 if a table is stale
 ```
 
+The platform skills are generated whole by `scripts/platform-skills.mjs` (same `--catalog` and `--check`; `--list`
+prints each slug with its Chinese display name for publishing). Change the list or the template there, not the files.
+Tests: `node --test scripts/*.test.mjs`.
+
 MIT licence. okdata is not affiliated with the platforms it reads.
 
 ---
@@ -78,6 +88,10 @@ MIT licence. okdata is not affiliated with the platforms it reads.
 | `okdata-transcripts` | YouTube 字幕（带时间戳）：总结、摘录、按时间跳转（也可取 TikTok、Instagram、Reddit 视频字幕） |
 
 每个技能都写明用哪些接口、各花多少钱，要求智能体先报预算再调用，报告最后注明数据来源和抓取时间。
+
+另有按平台拆开的中文技能，一个平台一个，列出该平台全部可用接口和价格：小红书数据助手、抖音数据助手、公众号数据助手、
+微信搜一搜与微信指数、视频号数据助手、快手数据助手、B站数据助手、微博数据助手、知乎数据助手、TikTok 数据助手、
+X（推特）数据助手、YouTube 数据助手、Instagram 数据助手、Reddit 数据助手、海外广告库查询（目录名都是 `okdata-平台`）。
 
 安装：`npx skills add okdataapi/skills`；Claude Code 里也可以 `/plugin marketplace add okdataapi/skills`。
 然后在 [okdata.online](https://okdata.online/zh/signup/?src=gh-skills) 注册拿 key，放进 `OKDATA_API_KEY`，

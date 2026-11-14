@@ -23,6 +23,29 @@
         "./skills/okdata-content-research",
         "./skills/okdata-transcripts"
       ]
+    },
+    {
+      "name": "okdata-platforms",
+      "description": "One skill per platform, named in Chinese: 小红书, 抖音, 公众号, 微信搜一搜, 视频号, 快手, B站, 微博, 知乎, TikTok, X, YouTube, Instagram, Reddit and the Meta and Google ad libraries, each with every live endpoint and its price.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/okdata-xiaohongshu",
+        "./skills/okdata-douyin",
+        "./skills/okdata-wechat-mp",
+        "./skills/okdata-wechat-search",
+        "./skills/okdata-wechat-channels",
+        "./skills/okdata-kuaishou",
+        "./skills/okdata-bilibili",
+        "./skills/okdata-weibo",
+        "./skills/okdata-zhihu",
+        "./skills/okdata-tiktok",
+        "./skills/okdata-x",
+        "./skills/okdata-youtube",
+        "./skills/okdata-instagram",
+        "./skills/okdata-reddit",
+        "./skills/okdata-ad-library"
+      ]
     }
   ]
 }
