@@ -50,6 +50,19 @@ test('every platform skill has a Chinese display name ending in okdata and a uni
   }
 });
 
+test('a link from the user only promises comments when the platform has a live comments endpoint', () => {
+  assert.ok(renderSkill(skill, catalog).includes('用户发来推文链接，想看内容和数据'));
+  for (const id of ['x.posts.comments.list', 'x.posts.replies.list']) {
+    const withComments = { ...catalog, endpoints: [...catalog.endpoints, endpoint(id)] };
+    assert.ok(renderSkill(skill, withComments).includes('用户发来推文链接，想看内容、数据或评论'), id);
+  }
+});
+
+test('a summary override replaces the catalog summary in the intro', () => {
+  assert.ok(renderSkill({ ...skill, summary: '只有帖子' }, catalog).includes('的公开数据：只有帖子。'));
+  assert.ok(renderSkill(skill, catalog).includes('的公开数据：帖子和账号。'));
+});
+
 test('a platform missing from the catalog is an error, not a silently empty skill', () => {
   assert.throws(() => renderSkill({ ...skill, platforms: ['nope'] }, catalog), /not in the catalog/);
 });

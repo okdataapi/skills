@@ -18,7 +18,9 @@ const DEFAULT_CATALOG = path.resolve(ROOT, '..', 'okdata', 'docs', 'catalog.json
 const SITE = 'https://okdata.online';
 const MCP_URL = 'https://api.okdata.online/mcp';
 
-/** One skill per platform. `uses` are the jobs people bring; `en` is how English speakers search for it. */
+/** One skill per platform. `uses` are the jobs people bring and must only name what live endpoints can do; `en` is
+ *  how English speakers search for it; `summary` replaces the catalog's platform summary when that one also
+ *  describes endpoints that are not live yet. */
 export const PLATFORM_SKILLS = [
   {
     slug: 'okdata-xiaohongshu', name: '小红书数据助手 okdata', platforms: ['xiaohongshu'], link: '小红书笔记链接',
@@ -61,9 +63,9 @@ export const PLATFORM_SKILLS = [
     uses: ['看微博热搜和话题', '按关键词搜微博做舆情监测', '查微博账号和它发的内容', '读微博评论区'],
   },
   {
-    slug: 'okdata-zhihu', name: '知乎数据助手 okdata', platforms: ['zhihu'], link: '知乎问题或文章链接',
-    en: 'Zhihu',
-    uses: ['看知乎热榜', '搜知乎问题、回答和文章', '读一个问题下的回答和评论', '查知乎用户和专栏'],
+    slug: 'okdata-zhihu', name: '知乎数据助手 okdata', platforms: ['zhihu'], link: '知乎问题链接',
+    en: 'Zhihu', summary: '问题、回答和文章',
+    uses: ['搜知乎上的问题、回答和文章', '读一个问题下的回答', '看大家在知乎上怎么讨论一个话题或一类产品'],
   },
   {
     slug: 'okdata-tiktok', name: 'TikTok 数据助手 okdata', platforms: ['tiktok'], link: 'TikTok 视频链接',
@@ -211,13 +213,13 @@ metadata:
 
 # ${title}（okdata）
 
-用 okdata 的接口读${zhList(platforms.map((p) => p.name.zh))}的公开数据：${zhList(platforms.map((p) => p.summary.zh.replace(/[。.]$/, '')))}。
+用 okdata 的接口读${zhList(platforms.map((p) => p.name.zh))}的公开数据：${skill.summary ?? zhList(platforms.map((p) => p.summary.zh.replace(/[。.]$/, '')))}。
 不用登录${zhList(platforms.map((p) => p.name.zh))}，也不用 Cookie，按次付费，调用失败不收费。
 
 ## 什么时候用
 
 ${skill.uses.map((u) => `- ${u}`).join('\n')}
-${skill.link ? `- 用户发来${skill.link}，想看内容、数据或评论\n` : ''}
+${skill.link ? `- 用户发来${skill.link}，${endpoints.some((e) => live(e) && /comments|replies/.test(e.id)) ? '想看内容、数据或评论' : '想看内容和数据'}\n` : ''}
 ## 能拿到的数据
 
 ${endpointTable(catalog, endpoints)}

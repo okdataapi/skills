@@ -1,6 +1,6 @@
 ---
 name: okdata-zhihu
-description: 知乎数据助手：用 okdata 接口读知乎的公开数据，包括知乎内容搜索、知乎问题回答等，不用登录、不用 Cookie，按次付费、失败不收费。适用于看知乎热榜、搜知乎问题、回答和文章、读一个问题下的回答和评论、查知乎用户和专栏。 Zhihu public data for AI agents through the okdata API (remote MCP or HTTP), paid per call.
+description: 知乎数据助手：用 okdata 接口读知乎的公开数据，包括知乎内容搜索、知乎问题回答等，不用登录、不用 Cookie，按次付费、失败不收费。适用于搜知乎上的问题、回答和文章、读一个问题下的回答、看大家在知乎上怎么讨论一个话题或一类产品。 Zhihu public data for AI agents through the okdata API (remote MCP or HTTP), paid per call.
 license: MIT
 metadata:
   openclaw:
@@ -15,16 +15,15 @@ metadata:
 
 # 知乎数据助手（okdata）
 
-用 okdata 的接口读知乎的公开数据：问题和回答、文章、专栏、用户和热榜。
+用 okdata 的接口读知乎的公开数据：问题、回答和文章。
 不用登录知乎，也不用 Cookie，按次付费，调用失败不收费。
 
 ## 什么时候用
 
-- 看知乎热榜
-- 搜知乎问题、回答和文章
-- 读一个问题下的回答和评论
-- 查知乎用户和专栏
-- 用户发来知乎问题或文章链接，想看内容、数据或评论
+- 搜知乎上的问题、回答和文章
+- 读一个问题下的回答
+- 看大家在知乎上怎么讨论一个话题或一类产品
+- 用户发来知乎问题链接，想看内容和数据
 
 ## 能拿到的数据
 
@@ -57,7 +56,7 @@ curl -sG "https://api.okdata.online/v1/zhihu/posts/search" \
 
 ## 用法建议
 
-1. 先用搜索类接口找到内容或账号，再查详情、评论或作品列表。用户直接发来知乎问题或文章链接时，表格里「需要传」写着 `url` 的接口可以直接传链接，不用自己拆 id。
+1. 先用搜索类接口找到内容或账号，再查详情、评论或作品列表。用户直接发来知乎问题链接时，表格里「需要传」写着 `url` 的接口可以直接传链接，不用自己拆 id。
 2. 列表接口一次返回一页。要更多就带上 `page.next_cursor` 再调一次，在 MCP 里也可以用 `read_more`。
 3. 调用前先算一下要调几次、大概多少钱，告诉用户再动手。给 `call` 设 `max_price`：这次可能花得比它多时，调用会被拒绝，不扣钱。
 4. 只读公开数据：不发帖、不点赞、不评论、不私信。
