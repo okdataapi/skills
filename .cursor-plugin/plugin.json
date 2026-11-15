@@ -1,6 +1,6 @@
 {
   "name": "okdata",
-  "description": "Social media data for AI agents: Douyin, Xiaohongshu (RedNote), WeChat, Bilibili, Weibo, Kuaishou, TikTok, X, YouTube, Instagram, Reddit and more. A remote MCP server plus skills for competitor monitoring, comments, creators, trends, content research and transcripts. Pay per call; failed calls are free.",
+  "description": "Social media data for AI agents: TikTok, YouTube, Instagram, X and Reddit, plus Douyin, Xiaohongshu (RedNote), WeChat, Bilibili, Weibo and Kuaishou. A remote MCP server plus skills for competitor monitoring, comments, creators, trends, content research and transcripts. Pay per call; failed calls are free.",
   "version": "0.1.0",
   "author": {
     "name": "okdata",
@@ -12,11 +12,14 @@
   "logo": "https://okdata.online/logo-512.png",
   "keywords": [
     "social-media",
-    "douyin",
+    "tiktok",
+    "youtube",
+    "instagram",
+    "reddit",
+    "twitter",
     "xiaohongshu",
     "rednote",
-    "wechat",
-    "tiktok",
+    "douyin",
     "mcp",
     "data-api"
   ]
