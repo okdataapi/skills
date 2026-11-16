@@ -19,7 +19,7 @@ numbers and the posts that back each pick.
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
+Catalog de11f23d71485342, price book 84f29877acc83a88. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
@@ -28,7 +28,7 @@ Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call
 | Xiaohongshu (RedNote) | `xiaohongshu.users.notes.list` | An account's notes, newest first. | `id` | page of ~20 | $0.02 per call |
 | Weibo | `weibo.users.get` | Followers, post count, verification and bio of an account. | `id` | one object | $0.002 per call |
 | TikTok | `tiktok.users.get` | Followers, likes, video count and bio of an account. | `username` | one object | $0.002 per call |
-| X (Twitter) | `x.users.get` | An account by handle or numeric ID, or up to 100 accounts by ID in one call: followers, following, post count, bio and verification. IDs that find no account are listed under data.missing and not charged. | `id` or `username` or `ids` | one object | $0.0004 per item, at most $0.04 per call |
+| X (Twitter) | `x.users.get` | An account by handle or numeric ID, or up to 100 accounts by ID in one call: followers, following, post count, bio and verification. IDs that find no account are listed under data.missing and not charged; a batch that finds none costs one account. | `id` or `username` or `ids` | one object | $0.0004 per item, at most $0.04 per call |
 | Douyin | `douyin.xingtu.creators.search` | Find Douyin creators on Xingtu, the official creator marketplace, by what they post or by name, filtered by followers, recent engagement rate and gender. Each with followers, 30-day engagement rate and median views, content categories and what an integrated and a custom video cost (in yuan). | `query` | page of ~20 | $0.004 per call |
 | Douyin | `douyin.xingtu.creators.rates.get` | What a Douyin creator charges on Xingtu for each kind of sponsored work (integrated video, custom video and more), in yuan, whether each is open and how it is settled. | `id` | one object | $0.04 per call |
 | Xiaohongshu (RedNote) | `xiaohongshu.pgy.creators.search` | Find Xiaohongshu creators on PGY (蒲公英), the official creator marketplace, by what their notes are about or by name, filtered by followers and note type, sorted by followers, engagement, reads or rate. Each with followers, median reads and engagements of everyday notes, content categories and what an image note and a video note cost (in yuan). | `query` | page of ~20 | $0.04 per call |
@@ -39,6 +39,9 @@ Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call
 | Reddit | `reddit.users.subreddits.list` | The communities a user is active in, each as an account: name, description and members (in followers). The whole list in one answer. | `username` | page of ~30 | $0.002 per call |
 | Kuaishou | `kuaishou.users.get` | An account by user ID: name, handle, bio, followers, following, video count, total likes, verification and IP location. | `id` | one object | $0.02 per call |
 | Kuaishou | `kuaishou.users.search` | Find accounts by keyword, optionally only verified ones or those live now, by gender, or ordered by followers: user ID, name, handle, bio, followers and verification. | `query` | page of ~20 | $0.02 per call |
+| Zhihu | `zhihu.users.get` | A person's profile by the handle in their link: name, headline and follower count, with answer and article counts, whether it is an organisation and IP location under ext. | `username` | one object | $0.002 per call |
+| Zhihu | `zhihu.users.search` | People and organisations matching keywords, 20 a page: name and follower count, with answer and article counts, upvotes received and whether it is an organisation under ext. The headline is in the profile (zhihu.users.get). | `query` | page of ~20 | $0.002 per call |
+| Zhihu | `zhihu.users.followers.list` | The people following an account, by its handle, 20 a page: name, handle, headline, avatar, follower count, and (under ext) answer and article counts and whether it is an organisation. | `username` | page of ~20 | $0.002 per call |
 | WeChat Channels | `wechat_channels.users.search` | Find a Channels account by its name through WeChat Search: account ID (v2_…@finder), name, avatar and who verified it. WeChat Search usually returns the one account whose name matches best. | `query` | page of ~1 | $0.02 per call |
 | WeChat Channels | `wechat_channels.users.get` | A Channels account by its ID: name, signature, avatar, IP location, number of videos, live hours and the linked Official Account. Followers and total likes are null when WeChat hides them. | `id` | one object | $0.02 per call |
 | Douyin | `douyin.users.search` | Find Douyin accounts by keyword, about 30 a page: account ID (the sec_uid douyin.users.get takes), name, avatar, followers, video count and total likes. No bio or verification here; the profile has them. | `query` | page of ~30 | $0.002 per call |
@@ -82,6 +85,7 @@ Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call
 | X (Twitter) | `x.lists.members.list` | The accounts a list is made of, 20 a page: handle, name, bio, followers and verification. | `id` | page of ~20 | $0.0004 per item, at most $0.008 per call |
 | X (Twitter) | `x.lists.followers.list` | Up to 20 accounts that follow a list: handle, name, bio, followers and verification. One page only; there is no next page. | `id` | page of ~20 | $0.0004 per item, at most $0.008 per call |
 | X (Twitter) | `x.communities.members.list` | The accounts that have joined a community, 20 a page: handle, name, bio, followers and verification. | `id` | page of ~20 | $0.0004 per item, at most $0.008 per call |
+| Douyin Shop | `douyin_shop.products.search` | Search Douyin Shop products in the creator affiliate marketplace (精选联盟) by keyword: title, final price, monthly sales, the shop and its score, and the commission rate a creator earns per sale. | `query` | page of ~30 | $0.054 per call |
 <!-- okdata:endpoints:end -->
 
 Candidates come from search: `douyin.videos.search`, `xiaohongshu.notes.search`, `tiktok.videos.search`,

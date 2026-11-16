@@ -134,7 +134,7 @@ In a terminal, the command line needs no install: `npx okdata find <words>` (fre
 ## Platforms and prices
 
 <!-- okdata:endpoints:start -->
-Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e: 201 endpoints you can call on 17 platforms.
+Catalog de11f23d71485342, price book 84f29877acc83a88: 230 endpoints you can call on 23 platforms.
 Prices are in USD per call (a few are per item returned, with a cap per call). A call that reaches the data
 source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls
 stopped before that, such as bad parameters or a low balance, are free. `find` picks the endpoint for a need
@@ -156,8 +156,14 @@ https://okdata.online/prices.json.
 | Instagram | 8 | $0.002 to $0.004 | Profiles, posts and reels, comments, hashtags and what a reel says. |
 | Reddit | 11 | $0.002 to $0.004 | Posts, comments, communities, people and what is trending. |
 | Kuaishou | 8 | $0.002 to $0.02 | Videos, accounts, comments and the hot list. |
-| Zhihu | 2 | $0.002 | Questions and answers, articles, columns, people and the hot list. |
+| Zhihu | 11 | $0.002 | Questions and answers, articles, columns, people and the hot list. |
 | WeChat Channels | 15 | $0.015 to $0.15 | Channels videos, accounts, comments and live replays, without a QR login. |
 | WeChat Search | 6 | $0.02 to $0.15 | WeChat Search across Official Account articles, Channels videos and mini programs. |
 | Telegram | 3 | $0.002 | Public channels and their messages. |
+| Amazon | 4 | $0.006 | Product search, details, reviews and Best Sellers lists, in 22 Amazon stores. |
+| AliExpress | 2 | $0.002 | Product search and buyer reviews, priced in US dollars. |
+| Taobao & Tmall | 4 | $0.033 to $0.043 | Product search, details with SKUs, buyer reviews and a shop's products. |
+| 1688 | 4 | $0.022 | China's wholesale marketplace: offers, tiered prices, suppliers and buyer reviews. |
+| Xianyu (Goofish) | 2 | $0.022 | Second-hand listings: search, asking prices and sellers. |
+| Douyin Shop | 4 | $0.039 to $0.054 | Affiliate-marketplace products with commission rates, sales, reviews and shops. |
 <!-- okdata:endpoints:end -->

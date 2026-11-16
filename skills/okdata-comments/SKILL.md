@@ -19,7 +19,7 @@ with counts and real quotes the person can click through to.
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
+Catalog de11f23d71485342, price book 84f29877acc83a88. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
@@ -41,6 +41,9 @@ Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call
 | Kuaishou | `kuaishou.comments.replies.list` | The replies under a top-level comment, by the comment's ID and its video's ID: text, replier, likes, time posted and IP location. | `id`, `post_id` | page of ~20 | $0.002 per call |
 | Zhihu | `zhihu.posts.search` | Answers and articles matching keywords, by relevance, newest or most upvoted, or answers only or articles only: title (the question, for an answer), full text, author, upvotes, comments and saves. | `query` | page of ~20 | $0.002 per call |
 | Zhihu | `zhihu.questions.answers.list` | The first 20 answers to a question, by ID or link, in Zhihu's own order: the question as title, full text, author and their followers, upvotes, comments, saves and time posted. One page: there is no next. | `id` or `url` | page of ~20 | $0.002 per call |
+| Zhihu | `zhihu.questions.get` | One question by ID or link: its title, the details added under it, when it was asked, and how many views it has, with its answer and follower counts under ext. | `id` or `url` | one object | $0.002 per call |
+| Zhihu | `zhihu.answers.get` | One answer by ID or link: the question it answers (as title), the full text, its author and when it was posted. | `id` or `url` | one object | $0.002 per call |
+| Zhihu | `zhihu.answers.comments.list` | The top-level comments on an answer, by the answer's ID, a page at a time in Zhihu's default order: text, commenter, likes, reply count, time posted and IP location. | `id` | page of ~10 | $0.002 per call |
 | WeChat Channels | `wechat_channels.videos.comments.list` | Top-level comments on a video, hottest first: text, commenter, likes, reply count, time posted and IP location. | `id` | page of ~25 | $0.015 per call |
 | WeChat Channels | `wechat_channels.comments.replies.list` | The replies under a top-level comment, by the comment's ID and its video's ID: text, replier, likes, time posted and IP location. | `id`, `post_id` | page of ~20 | $0.015 per call |
 | Douyin | `douyin.comments.replies.list` | The replies under a top-level comment, by the comment's ID and its video's ID, a page at a time: text, replier, likes, time posted and IP location. A comment that does not exist reads like one without replies: an empty page, not a 404. | `id`, `post_id` | page of ~20 | $0.002 per call |
@@ -55,11 +58,16 @@ Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call
 | WeChat Search | `wechat.backup.posts.search` | The backup of wechat.posts.search, from another source: the same parameters and result. | `query` | page of ~20 | $0.15 per call |
 | YouTube | `youtube.comments.replies.list` | The replies under a comment, by the comment's replies token, about 10 at a time: text, replier (handle, avatar, verification), likes, and roughly when it was posted (YouTube says "6 years ago"). post_id and parent_id are read from the token. | `id` | page of ~10 | $0.002 per call |
 | TikTok | `tiktok.comments.replies.list` | The replies to a comment, by the comment's ID and its video's ID, 20 a page: text, replier, likes, time posted and which comment each one answers. A comment that does not exist reads like one without replies: an empty page, not a 404. | `id`, `post_id` | page of ~20 | $0.002 per call |
-| X (Twitter) | `x.posts.replies.list` | The replies under a post, in the order X ranks them, up to about 60 a page. A reply is a post itself, so each comes back as a post: text, author, time posted, views, likes and its own reply count. | `id` | page of ~35 | $0.002 per call |
+| X (Twitter) | `x.posts.replies.list` | The replies under a post, in the order X ranks them, about 35 a page. A reply is a post itself, so each comes back as a post: text, author, time posted, views, likes and its own reply count. | `id` | page of ~35 | $0.002 per call |
 | X (Twitter) | `x.posts.quotes.list` | Posts that quote a post, newest or most popular first, 20 a page: what people added, who they are and how far it went. | `id` | page of ~20 | $0.0003 per item, at most $0.006 per call |
 | X (Twitter) | `x.posts.retweeters.list` | The accounts that retweeted a post, about 100 a page: handle, name, bio and follower count. | `id` | page of ~100 | $0.002 per call |
 | X (Twitter) | `x.users.mentions.list` | Posts that mention an account, newest first, 20 a page: text, author, time posted, views, likes and reposts. | `username` | page of ~20 | $0.0003 per item, at most $0.006 per call |
 | X (Twitter) | `x.communities.posts.list` | Posts in a community, newest first, 20 a page: text, author, time posted, views, likes and reposts. | `id` | page of ~20 | $0.0003 per item, at most $0.006 per call |
+| Amazon | `amazon.products.reviews.list` | Customer reviews of an Amazon product: stars, title and text, date, the variant bought, photos, helpful votes and whether the purchase is verified. | `id` | page of ~10 | $0.006 per call |
+| AliExpress | `aliexpress.products.reviews.list` | Buyers' reviews of an AliExpress product: stars, text (with an English translation), date, the variant bought, photos, helpful votes and the buyer's country. | `id` | page of ~20 | $0.002 per call |
+| Taobao & Tmall | `taobao.products.reviews.list` | Buyers' reviews of a Taobao or Tmall product: text, date, the variant bought, photos and likes, newest first or in Taobao's order. | `id` | page of ~20 | $0.043 per call |
+| 1688 | `alibaba_1688.products.reviews.list` | Buyers' reviews of a 1688 offer: stars, text, date and the variant bought, in 1688's order or newest first. | `id` | page of ~10 | $0.022 per call |
+| Douyin Shop | `douyin_shop.products.reviews.list` | Buyers' reviews of a Douyin Shop product: stars, text, date, the variant bought, photos and likes, with the shop's reply. | `id` | page of ~20 | $0.039 per call |
 <!-- okdata:endpoints:end -->
 
 Comment lists take the post id: get it from a link the person gives (`*.videos.get` / `*.notes.get` take `url`)

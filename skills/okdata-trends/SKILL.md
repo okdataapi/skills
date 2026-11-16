@@ -18,7 +18,7 @@ Read the boards, find what several platforms agree on, and show the posts that e
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
+Catalog de11f23d71485342, price book 84f29877acc83a88. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
@@ -59,6 +59,8 @@ Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call
 | WeChat Search | `wechat.backup.posts.search` | The backup of wechat.posts.search, from another source: the same parameters and result. | `query` | page of ~20 | $0.15 per call |
 | TikTok | `tiktok.hashtags.videos.list` | The videos under a hashtag, by its name, about 20 a page in TikTok's order: caption, author, plays, likes, comments, shares, saves, hashtags and time posted, with length, cover and music under ext. | `id` | page of ~20 | $0.002 per call |
 | Weibo | `weibo.backup.trends.list` | The backup of weibo.trends.list, for when it cannot serve: the Weibo hot search list from a separate data path (the app's), at a little more. The 50 ranked topics at their places, with heat; the pinned topic and paid rows are left out. | nothing | page of ~50 | $0.0025 per call |
+| Amazon | `amazon.bestsellers.list` | An Amazon Best Sellers list for a category, in rank order: rank, title, price, rating, number of ratings and photo. Also New Releases, Movers & Shakers, Most Wished For and Gift Ideas. | `category` | page of ~50 | $0.006 per call |
+| Xianyu (Goofish) | `xianyu.products.search` | Search Xianyu (Goofish), China's second-hand marketplace, by keyword: title, asking price and original price, the seller, their area and how many want it, newest, cheapest or by seller credit. | `query` | page of ~10 | $0.022 per call |
 <!-- okdata:endpoints:end -->
 
 The boards are cheap (most are $0.002 a call) and need no parameters. `x.trends.list` takes an ISO `country`

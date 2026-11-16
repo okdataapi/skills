@@ -19,15 +19,15 @@ linked to the moment in the video.
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
+Catalog de11f23d71485342, price book 84f29877acc83a88. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
 | YouTube | `youtube.videos.transcript.get` | The transcript of a video with timestamps, in the original or a chosen language. | `id` | one object | $0.004 per call |
 | Instagram | `instagram.posts.transcript.get` | What is said in a reel or video post, by shortcode or link, with timestamps. Videos up to two minutes long. | `id` or `url` | one object | $0.004 per call |
-| Reddit | `reddit.posts.transcript.get` | The captions of a Reddit-hosted video post, with timestamps. A post without captions is not_found and costs nothing. | `id` or `url` | one object | $0.004 per call |
+| Reddit | `reddit.posts.transcript.get` | The captions of a Reddit-hosted video post, with timestamps. A post without captions comes back not_found and is charged like any lookup. | `id` or `url` | one object | $0.004 per call |
 | Xiaohongshu (RedNote) | `xiaohongshu.videos.get` | A video note by ID or link: title, text, author, likes, comments, saves and shares, plus the video file, its length and cover, the subtitles the platform made where it has them, and whether the note is a reported brand partnership. Video notes only; an image note is the note detail’s. | `id` or `url` | one object | $0.02 per call |
-| TikTok | `tiktok.videos.transcript.get` | What is said in a TikTok video, by ID or link: the whole text and timed segments, from the video's captions (TikTok's own, often auto-generated). lang picks the captions' language; a video without captions in it is not found and not charged. | `id` or `url` | one object | $0.002 per call |
+| TikTok | `tiktok.videos.transcript.get` | What is said in a TikTok video, by ID or link: the whole text and timed segments, from the video's captions (TikTok's own, often auto-generated). lang picks the captions' language; a video without captions in it comes back not found and is charged like any lookup. | `id` or `url` | one object | $0.002 per call |
 <!-- okdata:endpoints:end -->
 
 This skill is about YouTube. Transcripts also exist for TikTok videos (`tiktok.videos.transcript.get`), Instagram
