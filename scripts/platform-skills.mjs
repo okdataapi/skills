@@ -144,7 +144,7 @@ function description(skill, platforms, endpoints) {
   const names = zhList(platforms.map((p) => p.name.zh));
   const what = zhList([...new Set(endpoints.filter(live).map((e) => e.short?.zh ?? e.title.zh))].slice(0, 8));
   const text = `${skill.name.replace(/ okdata$/, '')}：用 okdata 接口读${names}的公开数据，包括${what}等，`
-    + `不用登录、不用 Cookie，按次付费、失败不收费。适用于${zhList(skill.uses)}。`
+    + `不用登录、不用 Cookie，按次付费。适用于${zhList(skill.uses)}。`
     + ` ${skill.en} public data for AI agents through the okdata API (remote MCP or HTTP), paid per call.`;
   return text.length > 1000 ? `${text.slice(0, 997)}...` : text;
 }
@@ -152,7 +152,9 @@ function description(skill, platforms, endpoints) {
 function endpointTable(catalog, endpoints) {
   const rows = endpoints.filter(live).map((e) => `| \`${e.id}\` | ${cell(e.title.zh)}：${cell(e.summary.zh)} | ${zhNeeds(e)} | ${e.list ? `一页约 ${e.pageSize ?? '?'} 条` : '一条'} | ${zhPrice(e)} |`);
   return [
-    `目录版本 ${catalog.revision}，价目表 ${catalog.priceBook}。价格单位是美元，调用失败不收费。`,
+    `目录版本 ${catalog.revision}，价目表 ${catalog.priceBook}。价格单位是美元。`
+      + '请求到了数据源的调用，返回为空、查不到或出错也照常计费，按条计价的接口算一条；'
+      + '参数错误、余额不足这类还没请求数据源就被拦下的不扣费。',
     '',
     '| 接口 | 能拿到什么 | 需要传 | 每次返回 | 价格 |',
     '|---|---|---|---|---|',
@@ -178,8 +180,11 @@ curl -sG "https://api.okdata.online${apiPath(example)}" \\
 \`\`\`
 
 每个返回都带 \`code\`。\`"ok"\` 时数据在 \`data.items\`（列表，翻页看 \`page.next_cursor\`）或 \`data.item\` 里，
-\`meta.billing.amount\` 是这次花了多少钱。其他 \`code\` 都是出错，会说明 \`charged\` 和 \`retry\`：\`not_found\` 不要重试，
-\`rate_limited\` 等 \`retry_after_seconds\` 再试，\`timeout\` 用同一个 \`Idempotency-Key\` 重发，不会重复扣费。`;
+\`meta.billing.amount\` 是这次花了多少钱。其他 \`code\` 都是出错，会说明 \`charged\` 和 \`retry\`，扣了费还会带 \`amount\`。
+\`not_found\`、\`upstream_failed\`、\`upstream_busy\`、\`timeout\` 说明请求已经到了数据源，照常计费，再调一次就是一次新的付费调用：
+返回为空或 \`not_found\` 的不要重试，数据源出错最多再试一次。\`invalid_params\` 不扣费，改好参数再调就行；
+\`rate_limited\` 也不扣费，等 \`retry_after_seconds\` 再试。\`Idempotency-Key\` 每次调用用新的，
+只有没收到返回、要原样重发同一个请求时才沿用原来那个。`;
 }
 
 export function renderSkill(skill, catalog) {
@@ -214,7 +219,7 @@ metadata:
 # ${title}（okdata）
 
 用 okdata 的接口读${zhList(platforms.map((p) => p.name.zh))}的公开数据：${skill.summary ?? zhList(platforms.map((p) => p.summary.zh.replace(/[。.]$/, '')))}。
-不用登录${zhList(platforms.map((p) => p.name.zh))}，也不用 Cookie，按次付费，调用失败不收费。
+不用登录${zhList(platforms.map((p) => p.name.zh))}，也不用 Cookie，按次付费。
 
 ## 什么时候用
 

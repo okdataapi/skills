@@ -1,6 +1,6 @@
 ---
 name: okdata-douyin
-description: 抖音数据助手：用 okdata 接口读抖音的公开数据，包括抖音视频搜索、抖音视频详情、抖音视频评论、抖音账号信息、抖音账号作品列表、抖音热搜榜、抖音星图达人搜索、抖音星图达人报价等，不用登录、不用 Cookie，按次付费、失败不收费。适用于抖音视频数据分析和爆款调研、查抖音账号的粉丝、获赞和全部作品、导出视频评论做口碑和舆情分析、看抖音热搜榜，找达人和星图报价。 Douyin (China TikTok) public data for AI agents through the okdata API (remote MCP or HTTP), paid per call.
+description: 抖音数据助手：用 okdata 接口读抖音的公开数据，包括抖音视频搜索、抖音视频详情、抖音视频评论、抖音账号信息、抖音账号作品列表、抖音热搜榜、抖音星图达人搜索、抖音星图达人报价等，不用登录、不用 Cookie，按次付费。适用于抖音视频数据分析和爆款调研、查抖音账号的粉丝、获赞和全部作品、导出视频评论做口碑和舆情分析、看抖音热搜榜，找达人和星图报价。 Douyin (China TikTok) public data for AI agents through the okdata API (remote MCP or HTTP), paid per call.
 license: MIT
 metadata:
   openclaw:
@@ -16,7 +16,7 @@ metadata:
 # 抖音数据助手（okdata）
 
 用 okdata 的接口读抖音的公开数据：视频、账号、评论和热搜榜。
-不用登录抖音，也不用 Cookie，按次付费，调用失败不收费。
+不用登录抖音，也不用 Cookie，按次付费。
 
 ## 什么时候用
 
@@ -28,7 +28,7 @@ metadata:
 
 ## 能拿到的数据
 
-目录版本 2128c2e84655fc1f，价目表 1b273c48fea9634e。价格单位是美元，调用失败不收费。
+目录版本 2128c2e84655fc1f，价目表 1b273c48fea9634e。价格单位是美元。请求到了数据源的调用，返回为空、查不到或出错也照常计费，按条计价的接口算一条；参数错误、余额不足这类还没请求数据源就被拦下的不扣费。
 
 | 接口 | 能拿到什么 | 需要传 | 每次返回 | 价格 |
 |---|---|---|---|---|
@@ -88,8 +88,11 @@ curl -sG "https://api.okdata.online/v1/douyin/videos/search" \
 ```
 
 每个返回都带 `code`。`"ok"` 时数据在 `data.items`（列表，翻页看 `page.next_cursor`）或 `data.item` 里，
-`meta.billing.amount` 是这次花了多少钱。其他 `code` 都是出错，会说明 `charged` 和 `retry`：`not_found` 不要重试，
-`rate_limited` 等 `retry_after_seconds` 再试，`timeout` 用同一个 `Idempotency-Key` 重发，不会重复扣费。
+`meta.billing.amount` 是这次花了多少钱。其他 `code` 都是出错，会说明 `charged` 和 `retry`，扣了费还会带 `amount`。
+`not_found`、`upstream_failed`、`upstream_busy`、`timeout` 说明请求已经到了数据源，照常计费，再调一次就是一次新的付费调用：
+返回为空或 `not_found` 的不要重试，数据源出错最多再试一次。`invalid_params` 不扣费，改好参数再调就行；
+`rate_limited` 也不扣费，等 `retry_after_seconds` 再试。`Idempotency-Key` 每次调用用新的，
+只有没收到返回、要原样重发同一个请求时才沿用原来那个。
 
 ## 用法建议
 

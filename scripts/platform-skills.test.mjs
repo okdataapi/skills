@@ -66,3 +66,11 @@ test('a summary override replaces the catalog summary in the intro', () => {
 test('a platform missing from the catalog is an error, not a silently empty skill', () => {
   assert.throws(() => renderSkill({ ...skill, platforms: ['nope'] }, catalog), /not in the catalog/);
 });
+
+test('a rendered skill says answers that reached the source are charged and a retry is a new paid call', () => {
+  const md = renderSkill(skill, catalog);
+  assert.ok(!/失败不收费|失败不扣费|不会重复扣费/.test(md), 'never says failed calls are free');
+  assert.ok(md.includes('返回为空、查不到或出错也照常计费'));
+  assert.ok(md.includes('再调一次就是一次新的付费调用'));
+  assert.ok(md.includes('`invalid_params` 不扣费'));
+});

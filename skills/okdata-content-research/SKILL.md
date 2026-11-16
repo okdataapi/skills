@@ -19,7 +19,7 @@ each one backed by real examples.
 ## Endpoints for this job
 
 <!-- okdata:endpoints:start -->
-Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD; failed calls are free.
+Catalog 2128c2e84655fc1f, price book 1b273c48fea9634e. Prices are in USD. A call that reaches the data source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped before that, such as bad parameters or a low balance, are free.
 
 | Platform | Endpoint | Returns | Needs | Per call | Price |
 |---|---|---|---|---|---|
@@ -139,8 +139,12 @@ curl -sG "https://api.okdata.online/v1/weibo/trends/list" \
 
 Every answer has `code`. `"ok"` carries `data.items` (lists, with `page.next_cursor`) or `data.item`, plus
 `meta.billing.amount` (what the call cost) and `meta.fetched_at`. Anything else is an error with `charged`
-and `retry`: do not retry `not_found`, wait `retry_after_seconds` on `rate_limited`, and resend a `timeout`
-with the same `Idempotency-Key` so it cannot be charged twice.
+(plus `amount` when it was charged) and `retry`. `not_found`, `upstream_failed`, `upstream_busy` and `timeout`
+mean the call reached the data source, so it is charged like any call, and trying again is a new paid call: do
+not retry an empty answer or `not_found`, and retry a source failure once at most. `invalid_params` costs
+nothing, so fix the parameter and resend; `rate_limited` costs nothing either, so wait `retry_after_seconds`.
+Use a new `Idempotency-Key` for every call, and reuse one only to resend the identical request when its answer
+never arrived.
 <!-- okdata:howto:end -->
 
 ## Report

@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Agent Skills for okdata: public social data from TikTok, YouTube, Instagram, X, Reddit, Douyin, Xiaohongshu, WeChat, Kuaishou, Bilibili, Weibo and more, paid per call.",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {

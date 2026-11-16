@@ -9,6 +9,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { PLATFORM_SKILLS } from './platform-skills.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SKILLS = path.join(ROOT, 'skills');
@@ -73,7 +74,9 @@ function endpointsBlock(catalog, job) {
     return `| ${cell(names[e.platform] ?? e.platform)} | \`${e.id}\` | ${cell(e.summary.en)} | ${needs(e)} | ${page} | ${price(e)} |`;
   });
   return [
-    `Catalog ${catalog.revision}, price book ${catalog.priceBook}. Prices are in USD; failed calls are free.`,
+    `Catalog ${catalog.revision}, price book ${catalog.priceBook}. Prices are in USD. A call that reaches the data source is `
+      + 'charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls stopped '
+      + 'before that, such as bad parameters or a low balance, are free.',
     '',
     '| Platform | Endpoint | Returns | Needs | Per call | Price |',
     '|---|---|---|---|---|---|',
@@ -91,8 +94,10 @@ function platformsBlock(catalog, live) {
   });
   return [
     `Catalog ${catalog.revision}, price book ${catalog.priceBook}: ${live.length} endpoints you can call on ${rows.length} platforms.`,
-    'Prices are in USD per call (a few are per item returned, with a cap per call); failed calls are free. `find` picks',
-    'the endpoint for a need and `describe` gives its parameters and exact price, both free; every price is also in',
+    'Prices are in USD per call (a few are per item returned, with a cap per call). A call that reaches the data',
+    'source is charged even when it comes back empty, not found or failed (one item on a per-item endpoint); calls',
+    'stopped before that, such as bad parameters or a low balance, are free. `find` picks the endpoint for a need',
+    'and `describe` gives its parameters and exact price, both free; every price is also in',
     'https://okdata.online/prices.json.',
     '',
     '| Platform | Endpoints | Prices | What it has |',
@@ -122,8 +127,12 @@ function howtoBlock(catalog) {
     '',
     'Every answer has `code`. `"ok"` carries `data.items` (lists, with `page.next_cursor`) or `data.item`, plus',
     '`meta.billing.amount` (what the call cost) and `meta.fetched_at`. Anything else is an error with `charged`',
-    'and `retry`: do not retry `not_found`, wait `retry_after_seconds` on `rate_limited`, and resend a `timeout`',
-    'with the same `Idempotency-Key` so it cannot be charged twice.',
+    '(plus `amount` when it was charged) and `retry`. `not_found`, `upstream_failed`, `upstream_busy` and `timeout`',
+    'mean the call reached the data source, so it is charged like any call, and trying again is a new paid call: do',
+    'not retry an empty answer or `not_found`, and retry a source failure once at most. `invalid_params` costs',
+    'nothing, so fix the parameter and resend; `rate_limited` costs nothing either, so wait `retry_after_seconds`.',
+    'Use a new `Idempotency-Key` for every call, and reuse one only to resend the identical request when its answer',
+    'never arrived.',
   ].join('\n');
 }
 
@@ -140,7 +149,10 @@ async function main() {
   const source = arg('--catalog') ?? process.env.OKDATA_CATALOG ?? DEFAULT_CATALOG;
   const check = process.argv.includes('--check');
   const catalog = await loadCatalog(source);
-  const dirs = (await readdir(SKILLS, { withFileTypes: true })).filter((d) => d.isDirectory()).map((d) => d.name).sort();
+  // The platform skills are written whole by platform-skills.mjs and have no blocks to fill.
+  const generated = new Set(PLATFORM_SKILLS.map((s) => s.slug));
+  const dirs = (await readdir(SKILLS, { withFileTypes: true }))
+    .filter((d) => d.isDirectory() && !generated.has(d.name)).map((d) => d.name).sort();
   const unknown = dirs.filter((d) => !(d in JOB_OF));
   if (unknown.length) throw new Error(`no job mapped for ${unknown.join(', ')}; add them to JOB_OF`);
   const stale = [];
