@@ -23,6 +23,7 @@ Reddit and Amazon, plus Douyin, Xiaohongshu (RedNote), WeChat, Bilibili, Weibo, 
 | [`okdata-transcripts`](skills/okdata-transcripts/SKILL.md) | What does this video say? | [page](https://okdata.online/skills/transcripts/?src=skill-okdata-transcripts) |
 | [`okdata-ads`](skills/okdata-ads/SKILL.md) | What ads are competitors running? | [page](https://okdata.online/skills/ads/?src=skill-okdata-ads) |
 | [`okdata-products`](skills/okdata-products/SKILL.md) | What sells, and what do buyers say about it? | [page](https://okdata.online/skills/products/?src=skill-okdata-products) |
+| [`okdata-wechat-articles`](skills/okdata-wechat-articles/SKILL.md) | What did these Official Accounts publish this week, and can I have it all as Markdown? | [page](https://okdata.online/skills/wechat-articles/?src=skill-okdata-wechat-articles) |
 
 **One skill per platform**, each listing every live endpoint of that platform with its price:
 
@@ -113,6 +114,7 @@ Instagram、Reddit、亚马逊等 23 个平台的公开数据（230 个接口）
 | [`okdata-transcripts`](skills/okdata-transcripts/SKILL.md) | 这条视频讲了什么？ | [介绍页](https://okdata.online/zh/skills/transcripts/?src=skill-okdata-transcripts) |
 | [`okdata-ads`](skills/okdata-ads/SKILL.md) | 对手在投什么广告？ | [介绍页](https://okdata.online/zh/skills/ads/?src=skill-okdata-ads) |
 | [`okdata-products`](skills/okdata-products/SKILL.md) | 什么卖得好，买家怎么评价？ | [介绍页](https://okdata.online/zh/skills/products/?src=skill-okdata-products) |
+| [`okdata-wechat-articles`](skills/okdata-wechat-articles/SKILL.md) | 这些公众号这周发了什么？能不能全文导出来？ | [介绍页](https://okdata.online/zh/skills/wechat-articles/?src=skill-okdata-wechat-articles) |
 
 **每个平台一个技能**，列出该平台全部可用接口和价格：
 

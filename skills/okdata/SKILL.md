@@ -99,6 +99,7 @@ Each answers one question with a few calls and one table. Install the one that f
 - `okdata-transcripts`: What does this video say? https://okdata.online/.well-known/agent-skills/okdata-transcripts/SKILL.md
 - `okdata-ads`: What ads are competitors running? https://okdata.online/.well-known/agent-skills/okdata-ads/SKILL.md
 - `okdata-products`: What sells, and what do buyers say about it? https://okdata.online/.well-known/agent-skills/okdata-products/SKILL.md
+- `okdata-wechat-articles`: What did these Official Accounts publish this week, and can I have it all as Markdown? https://okdata.online/.well-known/agent-skills/okdata-wechat-articles/SKILL.md
 
 ## Platform skills
 

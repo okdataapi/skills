@@ -72,6 +72,7 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-account-audit`: How is this account doing?
 - `okdata-viral`: Why did this post take off?
 - `okdata-creators`: Which accounts should we work with in this category?
+- `okdata-wechat-articles`: What did these Official Accounts publish this week, and can I have it all as Markdown?
 
 Every WeChat Official Accounts endpoint with its full contract: https://okdata.online/apis/wechat_mp/
 

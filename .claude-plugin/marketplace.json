@@ -25,7 +25,8 @@
         "./skills/okdata-creators",
         "./skills/okdata-transcripts",
         "./skills/okdata-ads",
-        "./skills/okdata-products"
+        "./skills/okdata-products",
+        "./skills/okdata-wechat-articles"
       ]
     },
     {
