@@ -75,6 +75,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-account-audit`: How is this account doing?
 - `okdata-viral`: Why did this post take off?
 
-Every Bilibili endpoint with its full contract: https://okdata.online/apis/bilibili/
+Every Bilibili endpoint with its full contract: https://okdata.online/apis/bilibili/?src=skill-okdata-bilibili
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

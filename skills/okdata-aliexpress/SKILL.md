@@ -8,7 +8,7 @@ license: MIT
 
 > Product search and buyer reviews, priced in US dollars. (速卖通：商品搜索和买家评价，价格以美元计。)
 
-3 endpoints, $0.002 a call. Nothing here needs a AliExpress account, cookie or QR login.
+3 endpoints, $0.002 a call. Nothing here needs an AliExpress account, cookie or QR login.
 
 ## Which endpoint answers which question
 
@@ -64,6 +64,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 
 - `okdata-products`: What sells, and what do buyers say about it?
 
-Every AliExpress endpoint with its full contract: https://okdata.online/apis/aliexpress/
+Every AliExpress endpoint with its full contract: https://okdata.online/apis/aliexpress/?src=skill-okdata-aliexpress
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

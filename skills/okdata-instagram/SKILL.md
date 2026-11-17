@@ -8,7 +8,7 @@ license: MIT
 
 > Profiles, posts and reels, comments, hashtags and what a reel says. (Instagram：账号、帖子和 Reels、评论、话题，以及 Reel 里说了什么。)
 
-8 endpoints, $0.002–$0.004 a call. Nothing here needs a Instagram account, cookie or QR login.
+8 endpoints, $0.002–$0.004 a call. Nothing here needs an Instagram account, cookie or QR login.
 
 ## Which endpoint answers which question
 
@@ -74,6 +74,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-creators`: Which accounts should we work with in this category?
 - `okdata-transcripts`: What does this video say?
 
-Every Instagram endpoint with its full contract: https://okdata.online/apis/instagram/
+Every Instagram endpoint with its full contract: https://okdata.online/apis/instagram/?src=skill-okdata-instagram
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

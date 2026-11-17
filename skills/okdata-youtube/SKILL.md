@@ -75,6 +75,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-creators`: Which accounts should we work with in this category?
 - `okdata-transcripts`: What does this video say?
 
-Every YouTube endpoint with its full contract: https://okdata.online/apis/youtube/
+Every YouTube endpoint with its full contract: https://okdata.online/apis/youtube/?src=skill-okdata-youtube
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

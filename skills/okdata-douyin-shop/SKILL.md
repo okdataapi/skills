@@ -65,6 +65,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 
 - `okdata-products`: What sells, and what do buyers say about it?
 
-Every Douyin Shop endpoint with its full contract: https://okdata.online/apis/douyin_shop/
+Every Douyin Shop endpoint with its full contract: https://okdata.online/apis/douyin_shop/?src=skill-okdata-douyin-shop
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

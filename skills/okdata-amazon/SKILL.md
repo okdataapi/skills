@@ -8,7 +8,7 @@ license: MIT
 
 > Product search, details, reviews and Best Sellers lists, in 22 Amazon stores. (亚马逊：22 个国家站点的商品搜索、详情、评论和畅销榜。)
 
-4 endpoints, $0.006 a call. Nothing here needs a Amazon account, cookie or QR login.
+4 endpoints, $0.006 a call. Nothing here needs an Amazon account, cookie or QR login.
 
 ## Which endpoint answers which question
 
@@ -65,6 +65,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 
 - `okdata-products`: What sells, and what do buyers say about it?
 
-Every Amazon endpoint with its full contract: https://okdata.online/apis/amazon/
+Every Amazon endpoint with its full contract: https://okdata.online/apis/amazon/?src=skill-okdata-amazon
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

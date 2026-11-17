@@ -78,6 +78,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-viral`: Why did this post take off?
 - `okdata-transcripts`: What does this video say?
 
-Every Reddit endpoint with its full contract: https://okdata.online/apis/reddit/
+Every Reddit endpoint with its full contract: https://okdata.online/apis/reddit/?src=skill-okdata-reddit
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

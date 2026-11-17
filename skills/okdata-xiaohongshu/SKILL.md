@@ -98,6 +98,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-creators`: Which accounts should we work with in this category?
 - `okdata-products`: What sells, and what do buyers say about it?
 
-Every Xiaohongshu (RedNote) endpoint with its full contract: https://okdata.online/apis/xiaohongshu/
+Every Xiaohongshu (RedNote) endpoint with its full contract: https://okdata.online/apis/xiaohongshu/?src=skill-okdata-xiaohongshu
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

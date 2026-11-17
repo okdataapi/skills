@@ -74,6 +74,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-creators`: Which accounts should we work with in this category?
 - `okdata-wechat-articles`: What did these Official Accounts publish this week, and can I have it all as Markdown?
 
-Every WeChat Official Accounts endpoint with its full contract: https://okdata.online/apis/wechat_mp/
+Every WeChat Official Accounts endpoint with its full contract: https://okdata.online/apis/wechat_mp/?src=skill-okdata-wechat-mp
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

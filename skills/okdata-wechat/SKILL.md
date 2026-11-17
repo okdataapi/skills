@@ -68,6 +68,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-mentions`: What are people saying about this brand or keyword on each platform?
 - `okdata-creators`: Which accounts should we work with in this category?
 
-Every WeChat Search endpoint with its full contract: https://okdata.online/apis/wechat/
+Every WeChat Search endpoint with its full contract: https://okdata.online/apis/wechat/?src=skill-okdata-wechat
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

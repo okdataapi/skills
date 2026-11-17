@@ -64,6 +64,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 
 - `okdata-ads`: What ads are competitors running?
 
-Every Meta Ad Library endpoint with its full contract: https://okdata.online/apis/meta/
+Every Meta Ad Library endpoint with its full contract: https://okdata.online/apis/meta/?src=skill-okdata-meta
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.

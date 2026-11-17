@@ -86,6 +86,6 @@ Not connected yet? Follow https://okdata.online/agents.md.
 - `okdata-ads`: What ads are competitors running?
 - `okdata-products`: What sells, and what do buyers say about it?
 
-Every TikTok endpoint with its full contract: https://okdata.online/apis/tiktok/
+Every TikTok endpoint with its full contract: https://okdata.online/apis/tiktok/?src=skill-okdata-tiktok
 
 Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.
