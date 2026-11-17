@@ -1,7 +1,7 @@
 {
   "name": "okdata",
   "description": "Social media data for AI agents: TikTok, YouTube, Instagram, X and Reddit, plus Douyin, Xiaohongshu (RedNote), WeChat, Bilibili, Weibo and Kuaishou. A remote MCP server plus skills for competitor monitoring, comments, creators, trends, content research and transcripts. Pay per call.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": {
     "name": "okdata",
     "url": "https://okdata.online"
@@ -11,16 +11,20 @@
   "license": "MIT",
   "logo": "https://okdata.online/logo-512.png",
   "keywords": [
-    "social-media",
-    "tiktok",
-    "youtube",
+    "1688",
+    "agent-skills",
+    "amazon",
+    "data-api",
+    "douyin",
     "instagram",
+    "mcp",
     "reddit",
+    "rednote",
+    "social-media",
+    "taobao",
+    "tiktok",
     "twitter",
     "xiaohongshu",
-    "rednote",
-    "douyin",
-    "mcp",
-    "data-api"
+    "youtube"
   ]
 }

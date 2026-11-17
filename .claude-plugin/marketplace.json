@@ -6,45 +6,57 @@
   },
   "metadata": {
     "description": "Agent Skills for okdata: public social data from TikTok, YouTube, Instagram, X, Reddit, Douyin, Xiaohongshu, WeChat, Kuaishou, Bilibili, Weibo and more, paid per call.",
-    "version": "0.1.1"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "okdata-skills",
-      "description": "Competitor monitoring, comments and word of mouth, creator discovery, trends and hot search, content research and YouTube transcripts with okdata, plus a setup skill.",
+      "description": "Ten jobs with okdata: comments and word of mouth, competitor monitoring, brand mentions, trends, account check-ups, breaking down a hit, finding creators, video transcripts, ad creatives, products and reviews, plus the base okdata skill.",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/okdata-setup",
-        "./skills/okdata-competitors",
+        "./skills/okdata",
         "./skills/okdata-comments",
-        "./skills/okdata-creators",
+        "./skills/okdata-competitors",
+        "./skills/okdata-mentions",
         "./skills/okdata-trends",
-        "./skills/okdata-content-research",
-        "./skills/okdata-transcripts"
+        "./skills/okdata-account-audit",
+        "./skills/okdata-viral",
+        "./skills/okdata-creators",
+        "./skills/okdata-transcripts",
+        "./skills/okdata-ads",
+        "./skills/okdata-products"
       ]
     },
     {
       "name": "okdata-platforms",
-      "description": "One skill per platform, named in Chinese: 小红书, 抖音, 公众号, 微信搜一搜, 视频号, 快手, B站, 微博, 知乎, TikTok, X, YouTube, Instagram, Reddit and the Meta and Google ad libraries, each with every live endpoint and its price.",
+      "description": "One skill per platform (23): TikTok, YouTube, Instagram, X, Reddit, Amazon, AliExpress, Meta and Google ad libraries, Telegram, Douyin, Xiaohongshu, WeChat, Bilibili, Weibo, Kuaishou, Zhihu, Taobao, 1688, Xianyu and Douyin Shop, each with every live endpoint and its price.",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/okdata-xiaohongshu",
         "./skills/okdata-douyin",
+        "./skills/okdata-xiaohongshu",
         "./skills/okdata-wechat-mp",
-        "./skills/okdata-wechat-search",
-        "./skills/okdata-wechat-channels",
-        "./skills/okdata-kuaishou",
         "./skills/okdata-bilibili",
         "./skills/okdata-weibo",
-        "./skills/okdata-zhihu",
         "./skills/okdata-tiktok",
         "./skills/okdata-x",
         "./skills/okdata-youtube",
+        "./skills/okdata-meta",
+        "./skills/okdata-google",
         "./skills/okdata-instagram",
         "./skills/okdata-reddit",
-        "./skills/okdata-ad-library"
+        "./skills/okdata-kuaishou",
+        "./skills/okdata-zhihu",
+        "./skills/okdata-wechat-channels",
+        "./skills/okdata-wechat",
+        "./skills/okdata-telegram",
+        "./skills/okdata-amazon",
+        "./skills/okdata-aliexpress",
+        "./skills/okdata-taobao",
+        "./skills/okdata-alibaba-1688",
+        "./skills/okdata-xianyu",
+        "./skills/okdata-douyin-shop"
       ]
     }
   ]
