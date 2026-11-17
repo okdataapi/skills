@@ -134,4 +134,4 @@ Each answers one question with a few calls and one table. Install the one that f
 - The catalog and what is up, no key: https://api.okdata.online/v1/catalog and https://api.okdata.online/v1/catalog/status
 - Every skill: https://okdata.online/.well-known/agent-skills/index.json
 
-Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.
+Generated from okdata catalog e9187254a76b5946, price book 84f29877acc83a88.

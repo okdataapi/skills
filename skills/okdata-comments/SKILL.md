@@ -99,4 +99,4 @@ Not connected yet? Follow https://okdata.online/agents.md.
 
 More: https://okdata.online/skills/comments/?src=skill-okdata-comments · 中文：https://okdata.online/zh/skills/comments/?src=skill-okdata-comments
 
-Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.
+Generated from okdata catalog e9187254a76b5946, price book 84f29877acc83a88.

@@ -67,4 +67,4 @@ Not connected yet? Follow https://okdata.online/agents.md.
 
 Every 1688 endpoint with its full contract: https://okdata.online/apis/alibaba_1688/?src=skill-okdata-alibaba-1688
 
-Generated from okdata catalog fd2b86c0154b7075, price book 84f29877acc83a88.
+Generated from okdata catalog e9187254a76b5946, price book 84f29877acc83a88.
