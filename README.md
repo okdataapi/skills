@@ -88,6 +88,8 @@ node scripts/mirror.mjs           # download every published skill, drop retired
 node scripts/mirror.mjs --check   # exit 1 if the repo differs from the site
 ```
 
+Publishing to ClawHub goes through `scripts/clawhub-publish.sh "<changelog>" [skill ...]`, which keeps each skill's Chinese display name from `scripts/clawhub-names.tsv`.
+
 MIT licence. okdata is not affiliated with the platforms it reads.
 
 ---
