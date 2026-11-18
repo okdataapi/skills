@@ -6,10 +6,7 @@ Markdown skills (`skills/*/SKILL.md`), plugin manifests for Claude Code, Codex a
 
 ## Reporting a vulnerability
 
-Please report security problems privately, not in a public issue:
-
-- GitHub: use **Report a vulnerability** on the Security tab of this repository, or
-- email hello@okdata.online with "security" in the subject.
+Please report security problems privately, not in a public issue: email hello@okdata.online with "security" in the subject.
 
 Include what you found, how to reproduce it and what it affects (this repository, the MCP server or the okdata API). We will confirm we got it and tell you when a fix is out.
 
