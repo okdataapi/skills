@@ -6,7 +6,7 @@
 
 Skills that teach an AI agent (Claude Code, Codex, Cursor, OpenClaw and anything else that reads `SKILL.md`)
 to do marketing and research jobs with [okdata](https://okdata.online): public data from TikTok, YouTube, Instagram, X,
-Reddit and Amazon, plus Douyin, Xiaohongshu (RedNote), WeChat, Bilibili, Weibo, Taobao, 1688 and more (230 endpoints on
+Reddit and Amazon, plus Douyin, Xiaohongshu (RedNote), WeChat, Bilibili, Weibo, Taobao, 1688 and more (over 230 endpoints on
 23 platforms), paid per call.
 
 <!-- skills-en:start -->
@@ -71,6 +71,8 @@ Claude Code, as a plugin:
 /plugin marketplace add okdataapi/skills
 /plugin install okdata-skills@okdata
 ```
+
+Codex reads this repository as a plugin too: `.codex-plugin/plugin.json` bundles the skills and the MCP server.
 
 Or copy a folder from `skills/` into `~/.claude/skills/` (Claude Code), `~/.codex/skills/` (Codex) or your
 agent's skills folder.
