@@ -1,4 +1,4 @@
-okdata	社媒与电商数据接口 okdata（23 个平台）
+okdata	okdata: social media & e-commerce data API (36 platforms, MCP) · 社媒与电商数据接口
 okdata-account-audit	账号体检诊断 okdata
 okdata-ads	竞品广告素材拆解 okdata
 okdata-alibaba-1688	1688 数据助手 okdata
@@ -33,3 +33,16 @@ okdata-xianyu	闲鱼数据助手 okdata
 okdata-xiaohongshu	小红书数据助手 okdata
 okdata-youtube	YouTube 数据助手 okdata
 okdata-zhihu	知乎数据助手 okdata
+okdata-all	全网热榜数据助手 okdata
+okdata-app-store	App Store data · 苹果应用商店数据助手 okdata
+okdata-baidu	百度热搜数据助手 okdata
+okdata-bluesky	Bluesky data · Bluesky 数据助手 okdata
+okdata-douban	豆瓣影视数据助手 okdata
+okdata-facebook	Facebook data · Facebook 数据助手 okdata
+okdata-imdb	IMDb data · IMDb 影视数据助手 okdata
+okdata-jd	京东商品数据助手 okdata
+okdata-linkedin	LinkedIn jobs & companies · LinkedIn 职位公司数据 okdata
+okdata-toutiao	今日头条数据助手 okdata
+okdata-twitch	Twitch data · Twitch 数据助手 okdata
+okdata-xigua	西瓜视频数据助手 okdata
+okdata-youku	优酷视频数据助手 okdata

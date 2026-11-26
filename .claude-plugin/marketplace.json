@@ -51,13 +51,26 @@
         "./skills/okdata-zhihu",
         "./skills/okdata-wechat-channels",
         "./skills/okdata-wechat",
+        "./skills/okdata-facebook",
+        "./skills/okdata-linkedin",
         "./skills/okdata-telegram",
         "./skills/okdata-amazon",
         "./skills/okdata-aliexpress",
         "./skills/okdata-taobao",
         "./skills/okdata-alibaba-1688",
         "./skills/okdata-xianyu",
-        "./skills/okdata-douyin-shop"
+        "./skills/okdata-jd",
+        "./skills/okdata-douyin-shop",
+        "./skills/okdata-toutiao",
+        "./skills/okdata-xigua",
+        "./skills/okdata-baidu",
+        "./skills/okdata-bluesky",
+        "./skills/okdata-app-store",
+        "./skills/okdata-twitch",
+        "./skills/okdata-douban",
+        "./skills/okdata-imdb",
+        "./skills/okdata-youku",
+        "./skills/okdata-all"
       ]
     }
   ]
